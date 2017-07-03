@@ -4,7 +4,7 @@ var Index = function() {
 		var data = {
 			labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 			datasets: [{
-				label: 'My First dataset',
+				label: 'Grágico de energia',
 				fillColor: 'rgba(220,220,220,0.2)',
 				strokeColor: 'rgba(220,220,220,1)',
 				pointColor: 'rgba(220,220,220,1)',

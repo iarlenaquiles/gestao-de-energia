@@ -16,8 +16,10 @@ public class Energia {
 
 	private double corrente;
 
-	public Energia() {
-
+	public Energia(Integer id, double tensao, double corrente) {
+		this.id = id;
+		this.tensao = tensao;
+		this.corrente = corrente;
 	}
 
 	public Integer getId() {
