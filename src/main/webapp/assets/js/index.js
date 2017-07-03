@@ -3,34 +3,50 @@
 // var dData = function() {
 // return Math.round(Math.random() * 90) + 10;
 // };
-var dataJson;
-$.get("/getJson", function(response) {
-	dataJson = response;
+// var dataJson;
+// $.get("/getJson", function(response) {
+// dataJson = response;
+// });
+
+// $.ajax({
+// url: "/getJson",
+// method: "GET",
+// success: function(data) {
+// console.log(data);
+// },
+// error: function(data) {
+// console.log(data);
+// }
+// });
+var tensao = [];
+$.ajax({
+	url : "/getJson",
+	method : "GET",
+	success : function(res) {
+		for ( var i in res) {
+			tensao.push(res[i].tensao);
+		}
+	},
+	error : function(res) {
+		console.log(data);
+	}
 });
 
 var Index = function() {
+
 	var chart1Handler = function() {
 		var data = {
 			labels : [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug',
 					'Sep', 'Oct', 'Nov', 'Dec' ],
 			datasets : [ {
-				label : 'Grágico de energia',
-				fillColor : 'rgba(220,220,220,0.2)',
-				strokeColor : 'rgba(220,220,220,1)',
-				pointColor : 'rgba(220,220,220,1)',
-				pointStrokeColor : '#fff',
-				pointHighlightFill : '#fff',
-				pointHighlightStroke : 'rgba(220,220,220,1)',
-				data : [ 65, 59, 80, 81, 56, 55, 40, 84, 64, 120, 132, 87 ]
-			}, {
-				label : 'My Second dataset',
+				label : 'Energia',
 				fillColor : 'rgba(151,187,205,0.2)',
 				strokeColor : 'rgba(151,187,205,1)',
 				pointColor : 'rgba(151,187,205,1)',
 				pointStrokeColor : '#fff',
 				pointHighlightFill : '#fff',
 				pointHighlightStroke : 'rgba(151,187,205,1)',
-				data : [ 28, 48, 40, 19, 86, 27, 90, 102, 123, 145, 60, 161 ]
+				data : tensao
 			} ]
 		};
 
