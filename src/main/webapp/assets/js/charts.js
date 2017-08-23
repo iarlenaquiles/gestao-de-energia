@@ -354,7 +354,7 @@ var Charts = function() {"use strict";
 		var ctx = $("#polarChart").get(0).getContext("2d");
 		// This will get the first returned node in the jQuery collection.
 		var polarChart = new Chart(ctx).PolarArea(data, options);
-		;
+		
 		//generate the legend
 		var legend = polarChart.generateLegend();
 		//and append it to your page somewhere

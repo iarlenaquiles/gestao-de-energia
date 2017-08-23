@@ -12,11 +12,11 @@ public class Energia {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	private double tensao;
+	private int tensao;
 
-	private double corrente;
+	private int corrente;
 
-	public Energia(Integer id, double tensao, double corrente) {
+	public Energia(Integer id, int tensao, int corrente) {
 		this.id = id;
 		this.tensao = tensao;
 		this.corrente = corrente;
@@ -30,19 +30,19 @@ public class Energia {
 		this.id = id;
 	}
 
-	public double getTensao() {
+	public int getTensao() {
 		return tensao;
 	}
 
-	public void setTensao(double tensao) {
+	public void setTensao(int tensao) {
 		this.tensao = tensao;
 	}
 
-	public double getCorrente() {
+	public int getCorrente() {
 		return corrente;
 	}
 
-	public void setCorrente(double corrente) {
+	public void setCorrente(int corrente) {
 		this.corrente = corrente;
 	}
 

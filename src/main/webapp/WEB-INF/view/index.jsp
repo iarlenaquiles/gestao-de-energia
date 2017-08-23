@@ -707,7 +707,7 @@
 									<div class="col-md-7 col-lg-8">
 										<div class="panel panel-white no-radius" id="visits">
 											<div class="panel-heading border-light">
-												<h4 class="panel-title">Visits</h4>
+												<h4 class="panel-title">Energia</h4>
 												<ul class="panel-heading-tabs border-light">
 													<li>
 														<div class="pull-right">
@@ -739,7 +739,8 @@
 											<div collapse="visits" class="panel-wrapper">
 												<div class="panel-body">
 													<div class="height-350">
-														<canvas id="chart1" class="full-width"></canvas>
+													<div id="chartContainer" style="width:100%; height:280px"></div>  
+														<canvas id="canvas" height="450" width="600"></canvas>
 														<div class="margin-top-20">
 															<div class="inline pull-left">
 																<div id="chart1Legend" class="chart-legend"></div>
@@ -1320,11 +1321,47 @@
 	<script src="assets/js/main.js"></script>
 	<!-- start: JavaScript Event Handlers for this page -->
 	<script src="assets/js/index.js"></script>
+	<script type="text/javascript" src="assets/js/Chart.js"></script>
 	<script>
 		jQuery(document).ready(function() {
 			Main.init();
-			Index.init();
 		});
+	</script>
+	<script>
+		var teste = [];
+		/* teste.push(1);
+		teste.push(10);
+		teste.push(65);
+		teste.push(75);
+		teste.push(45);
+		teste.push(35);
+		teste.push(95); */
+		
+		$.ajax({
+			url : "/getJson",
+			method : "GET",
+			success : function(res) {
+				$.each(res, function(id,val) {
+					teste.push(val.tensao);
+				});
+			}
+		});
+		var lineChartData = {
+			labels : ["January","February","March","April","May","June","July"],
+			datasets : [
+			{
+				fillColor : "rgba(220,220,220,0.5)",
+				strokeColor : "rgba(220,220,220,1)",
+				pointColor : "rgba(220,220,220,1)",
+				pointStrokeColor : "#fff",
+				data : teste
+			}
+			]
+			
+		}
+
+		var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Line(lineChartData);
+
 	</script>
 	<!-- end: JavaScript Event Handlers for this page -->
 </body>

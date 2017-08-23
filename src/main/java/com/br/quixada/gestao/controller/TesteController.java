@@ -10,4 +10,9 @@ public class TesteController {
 	public String home(){
 		return "index";
 	}
+	
+	@RequestMapping("/grafico")
+	public String grafico(){
+		return "grafico";
+	}
 }

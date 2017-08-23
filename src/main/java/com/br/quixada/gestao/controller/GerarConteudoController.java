@@ -17,15 +17,23 @@ public class GerarConteudoController {
 
 		Energia nova = new Energia(1, 10, 10);
 		lista.add(nova);
-		nova = new Energia(2, 100, 20);
+		nova = new Energia(2, 56, 20);
 		lista.add(nova);
-		nova = new Energia(3, 200, 30);
+		nova = new Energia(3, 20, 30);
 		lista.add(nova);
-		nova = new Energia(4, 300, 30);
+		nova = new Energia(4, 29, 40);
 		lista.add(nova);
-		nova = new Energia(5, 400, 40);
+		nova = new Energia(5, 64, 50);
 		lista.add(nova);
-		nova = new Energia(6, 500, 50);
+		nova = new Energia(6, 118, 60);
+		lista.add(nova);
+		nova = new Energia(7, 34, 70);
+		lista.add(nova);
+		nova = new Energia(8, 39, 80);
+		lista.add(nova);
+		nova = new Energia(9, 67, 90);
+		lista.add(nova);
+		nova = new Energia(10, 50, 100);
 		lista.add(nova);
 		return lista;
 	}
