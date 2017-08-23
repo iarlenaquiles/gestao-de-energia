@@ -5,35 +5,42 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>grafico</title>
-<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.js"></script>
-	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/c3/0.1.29/c3.js"></script>
-	<link href="http://cdnjs.cloudflare.com/ajax/libs/c3/0.1.29/c3.css" rel="stylesheet" type="text/css">
-	<script src="vendor/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+	src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.js"></script>
+<script type="text/javascript"
+	src="http://cdnjs.cloudflare.com/ajax/libs/c3/0.1.29/c3.js"></script>
+<link href="http://cdnjs.cloudflare.com/ajax/libs/c3/0.1.29/c3.css"
+	rel="stylesheet" type="text/css">
+<script src="vendor/jquery/jquery.min.js"></script>
 </head>
 <body>
 	<h1>Testando gráficos</h1>
 	<div id="chart"></div>
 	<script type="text/javascript">
-	$(document).ready(function(){
-		var aux=[];
-		aux.push("Consumo");
+		$(document).ready(function() {
+			var tensao = [];
+			tensao.push("Tensão");
+			
+			var corrente = [];
+			corrente.push("Corrrente");
 
-		$.ajax({
-			url : "/getJson",
-			method : "GET",
-			success : function(res) {
-				$.each(res, function(id, val) {
-					aux.push(val.tensao);
-				});
-				var chart = c3.generate({
-					data: {
-						columns: [aux]
-					}
-				});
-			}
-		});			
-	});
+			$.ajax({
+				url : "/getJson",
+				method : "GET",
+				success : function(res) {
+					$.each(res, function(id, val) {
+						tensao.push(val.tensao);
+						corrente.push(val.corrente);
+					});
+					var chart = c3.generate({
+						data : {
+							columns : [ tensao, corrente]
+						}
+					});
+				}
+			});
+		});
 	</script>
-	
+
 </body>
 </html>
