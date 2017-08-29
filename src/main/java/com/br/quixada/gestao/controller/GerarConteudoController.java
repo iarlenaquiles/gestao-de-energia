@@ -37,6 +37,8 @@ public class GerarConteudoController {
 		lista.add(nova);
 		nova = new Energia(11, 90, 25);
 		lista.add(nova);
+		nova = new Energia(12, 30, 10);
+		lista.add(nova);
 		return lista;
 	}
 }
