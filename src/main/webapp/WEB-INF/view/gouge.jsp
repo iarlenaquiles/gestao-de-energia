@@ -33,7 +33,7 @@
 <link rel="stylesheet" href="assets/css/themes/theme-1.css"
 	id="skin_color" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Dashboard</title>
+<title>Gouge</title>
 <script src="vendor/jquery/jquery.min.js"></script>
 <script type="text/javascript"
 	src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.js"></script>
@@ -41,6 +41,31 @@
 	src="http://cdnjs.cloudflare.com/ajax/libs/c3/0.1.29/c3.js"></script>
 <link href="http://cdnjs.cloudflare.com/ajax/libs/c3/0.1.29/c3.css"
 	rel="stylesheet" type="text/css">
+	
+	<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="http://vizjs.org/viz.v1.0.0.min.js"></script>
+
+<style>
+.label{
+	font-size:22.5px;
+	fill:#ffffff;
+	text-anchor:middle;
+	alignment-baseline:middle;
+}
+.face{
+	stroke:#c8c8c8;
+	stroke-width:2;
+}
+.minorTicks{
+	stroke-width:2;
+	stroke:white;
+}
+.majorTicks{
+	stroke:white;
+	stroke-width:3;
+}
+
+</style>
 </head>
 <body>
 
@@ -202,7 +227,7 @@
 							<div class="col-sm-12">
 								<div class="row">
 									<div class="col-md-7 col-lg-12">
-										<div id="chart"></div>
+										<svg width="900" height="700"></svg>
 									</div>
 
 								</div>
@@ -251,7 +276,7 @@
 			Main.init();
 		});
 	</script>
-	<script type="text/javascript" src="assets/js/graficofinal.js"></script>
+	<script type="text/javascript" src="assets/js/gouge.js"></script>
 
 	<!-- end: JavaScript Event Handlers for this page -->
 </body>

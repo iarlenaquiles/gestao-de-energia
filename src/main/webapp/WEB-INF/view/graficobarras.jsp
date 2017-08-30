@@ -33,7 +33,7 @@
 <link rel="stylesheet" href="assets/css/themes/theme-1.css"
 	id="skin_color" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Dashboard</title>
+<title>Gráfico Barras</title>
 <script src="vendor/jquery/jquery.min.js"></script>
 <script type="text/javascript"
 	src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.js"></script>
@@ -251,7 +251,7 @@
 			Main.init();
 		});
 	</script>
-	<script type="text/javascript" src="assets/js/graficofinal.js"></script>
+	<script type="text/javascript" src="assets/js/graficobarras.js"></script>
 
 	<!-- end: JavaScript Event Handlers for this page -->
 </body>
