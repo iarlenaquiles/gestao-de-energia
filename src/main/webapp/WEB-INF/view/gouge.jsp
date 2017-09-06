@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -41,33 +42,71 @@
 	src="http://cdnjs.cloudflare.com/ajax/libs/c3/0.1.29/c3.js"></script>
 <link href="http://cdnjs.cloudflare.com/ajax/libs/c3/0.1.29/c3.css"
 	rel="stylesheet" type="text/css">
-	
-	<script src="https://d3js.org/d3.v3.min.js"></script>
-<script src="http://vizjs.org/viz.v1.0.0.min.js"></script>
+
+<script type="text/javascript" src="http://mbostock.github.com/d3/d3.js"></script>
+<script type="text/javascript" src="assets/js/gauge.js"></script>
 
 <style>
-.label{
-	font-size:22.5px;
-	fill:#ffffff;
-	text-anchor:middle;
-	alignment-baseline:middle;
+body {
+	font: 10px arial;
 }
-.face{
-	stroke:#c8c8c8;
-	stroke-width:2;
-}
-.minorTicks{
-	stroke-width:2;
-	stroke:white;
-}
-.majorTicks{
-	stroke:white;
-	stroke-width:3;
-}
-
 </style>
+
+<script>
+	var gauges = [];
+
+	function createGauge(name, label, min, max) {
+		var config = {
+			size : 200,
+			label : label,
+			min : undefined != min ? min : 0,
+			max : undefined != max ? max : 1000,
+			minorTicks : 5
+		}
+
+		var range = config.max - config.min;
+		config.yellowZones = [ {
+			from : config.min + range * 0.75,
+			to : config.min + range * 0.9
+		} ];
+		config.redZones = [ {
+			from : config.min + range * 0.9,
+			to : config.max
+		} ];
+
+		gauges[name] = new Gauge(name + "GaugeContainer", config);
+		gauges[name].render();
+	}
+
+	function createGauges() {
+		createGauge("bloco1", "Bloco 1");
+		createGauge("bloco2", "Bloco 2");
+		createGauge("bloco4", "Bloco 4");
+		createGauge("blocoAdm", "Bloco Adm");
+
+	}
+
+	function updateGauges() {
+		for ( var key in gauges) {
+			var value = getRandomValue(gauges[key])
+			gauges[key].redraw(value);
+		}
+	}
+
+	function getRandomValue(gauge) {
+		var overflow = 0; //10;
+		return gauge.config.min - overflow
+				+ (gauge.config.max - gauge.config.min + overflow * 2)
+				* Math.random();
+	}
+
+	function initialize() {
+		createGauges();
+		setInterval(updateGauges, 5000);
+	}
+</script>
 </head>
-<body>
+<body onload="initialize()">
 
 	<div id="app">
 		<!-- sidebar -->
@@ -114,7 +153,7 @@
 								</div>
 							</div>
 					</a></li>
-					
+
 					<li><a href="/gouge">
 							<div class="item-content">
 								<div class="item-media">
@@ -168,66 +207,29 @@
 					</section>
 					<!-- end: DASHBOARD TITLE -->
 					<!-- start: FEATURED BOX LINKS -->
-					<div class="container-fluid container-fullw bg-white">
-						<div class="row">
-							<div class="col-sm-4">
-								<div class="panel panel-white no-radius text-center">
-									<div class="panel-body">
-										<span class="fa-stack fa-2x"> <i
-											class="fa fa-square fa-stack-2x text-primary"></i> <i
-											class="fa fa-smile-o fa-stack-1x fa-inverse"></i>
-										</span>
-										<h2 class="StepTitle">Manage Users</h2>
-										<p class="text-small">To add users, you need to be signed
-											in as the super user.</p>
-										<p class="links cl-effect-1">
-											<a href> view more </a>
-										</p>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-4">
-								<div class="panel panel-white no-radius text-center">
-									<div class="panel-body">
-										<span class="fa-stack fa-2x"> <i
-											class="fa fa-square fa-stack-2x text-primary"></i> <i
-											class="fa fa-paperclip fa-stack-1x fa-inverse"></i>
-										</span>
-										<h2 class="StepTitle">Manage Orders</h2>
-										<p class="text-small">The Manage Orders tool provides a
-											view of all your orders.</p>
-										<p class="cl-effect-1">
-											<a href> view more </a>
-										</p>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-4">
-								<div class="panel panel-white no-radius text-center">
-									<div class="panel-body">
-										<span class="fa-stack fa-2x"> <i
-											class="fa fa-square fa-stack-2x text-primary"></i> <i
-											class="fa fa-terminal fa-stack-1x fa-inverse"></i>
-										</span>
-										<h2 class="StepTitle">Manage Database</h2>
-										<p class="text-small">Store, modify, and extract
-											information from your database.</p>
-										<p class="links cl-effect-1">
-											<a href> view more </a>
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					<c:import url="itens.jsp"></c:import>
 					<!-- end: FEATURED BOX LINKS -->
 					<!-- start: FIRST SECTION -->
 					<div class="container-fluid container-fullw padding-bottom-10">
 						<div class="row">
 							<div class="col-sm-12">
+							<h1>Consumo instantâneo</h1>
 								<div class="row">
-									<div class="col-md-7 col-lg-12">
-										<svg width="900" height="700"></svg>
+									<div class="col-md-12 col-lg-3">
+										
+										<span id="bloco1GaugeContainer"></span>
+									</div>
+
+									<div class="col-md-12 col-lg-3">
+										<span id="bloco2GaugeContainer"></span>
+									</div>
+
+									<div class="col-md-12 col-lg-3">
+										<span id="bloco4GaugeContainer"></span>
+									</div>
+
+									<div class="col-md-12 col-lg-3">
+										<span id="blocoAdmGaugeContainer"></span>
 									</div>
 
 								</div>
@@ -276,8 +278,6 @@
 			Main.init();
 		});
 	</script>
-	<script type="text/javascript" src="assets/js/gouge.js"></script>
-
 	<!-- end: JavaScript Event Handlers for this page -->
 </body>
 </html>
