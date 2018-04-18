@@ -81,7 +81,7 @@ body {
 	function createGauges() {
 		createGauge("bloco1", "Bloco 1");
 		createGauge("bloco2", "Bloco 2");
-		createGauge("bloco4", "Bloco 4");
+		//createGauge("bloco4", "Bloco 4");
 		createGauge("blocoAdm", "Bloco Adm");
 
 	}
@@ -224,9 +224,9 @@ body {
 										<span id="bloco2GaugeContainer"></span>
 									</div>
 
-									<div class="col-md-12 col-lg-3">
-										<span id="bloco4GaugeContainer"></span>
-									</div>
+<!-- 									<div class="col-md-12 col-lg-3"> -->
+<!-- 										<span id="bloco4GaugeContainer"></span> -->
+<!-- 									</div> -->
 
 									<div class="col-md-12 col-lg-3">
 										<span id="blocoAdmGaugeContainer"></span>

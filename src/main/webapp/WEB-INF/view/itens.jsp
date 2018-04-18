@@ -9,7 +9,7 @@
 					</span>
 					<h2 class="StepTitle">Quantidade de Blocos</h2>
 					<div class="value">
-						<h1>4</h1>
+						<h1>3</h1>
 					</div>
 				</div>
 			</div>
